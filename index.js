@@ -6,6 +6,7 @@ const restCountriesApi = axios.create({
 });
 
 function getCountryInfo(theName) {
+  setLoading()
   restCountriesApi.get(theName)
     .then(responseFromAPI => {
       removeErrDiv();
@@ -28,6 +29,12 @@ function getCountryInfo(theName) {
         console.log('err => ', err)
       }
     })
+}
+
+function setLoading() {
+  document.getElementById("countryName").innerHTML = 'Loading...'
+  document.getElementById("countryCapital").innerHTML = ''
+  document.getElementById("currency").innerHTML = ''
 }
 
 function createDiv() {
